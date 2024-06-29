@@ -3,12 +3,7 @@ import Head from "next/head";
 import moment from "moment";
 import ResponsiveTable from "@monaco/components/ResponsiveTable";
 import Driver, { TableHeader } from "@monaco/components/simple/Driver";
-import Radio from "@monaco/components/Radio";
-import Map from "@monaco/components/Map";
 import Input from "@monaco/components/Input";
-import SpeedTrap, { speedTrapColumns } from "@monaco/components/SpeedTrap";
-
-const f1Url = "https://livetiming.formula1.com";
 
 const sortPosition = (a, b) => {
   const [, aLine] = a;
@@ -37,24 +32,6 @@ const getFlagColour = (flag) => {
       return { bg: "blue" };
     default:
       return { bg: "transparent" };
-  }
-};
-
-const getWeatherUnit = (key) => {
-  switch (key) {
-    case "AirTemp":
-    case "TrackTemp":
-      return "°C";
-    case "Humidity":
-      return "%";
-    case "Pressure":
-      return " mbar";
-    case "WindDirection":
-      return "°";
-    case "WindSpeed":
-      return " km/h";
-    default:
-      return null;
   }
 };
 
@@ -151,8 +128,6 @@ export default function Home() {
     }
   }, [delayTarget]);
 
-  // const messageCount =
-  //   Object.values(liveState?.RaceControlMessages?.Messages ?? []).length 
   const messages = Object.values(liveState?.RaceControlMessages?.Messages ?? []);
   const filteredMessages = messages.filter(item => item.Flag?.toLowerCase() !== "blue");
   const messageCount = filteredMessages.length;
@@ -310,18 +285,6 @@ export default function Home() {
                 alignItems: "flex-start",
               }}
             >
-              {/* {!!SessionInfo && (
-                <>
-                  <p style={{ marginRight: "var(--space-4)" }}>
-                    <strong>{SessionInfo.Meeting.OfficialName}</strong>,{" "}
-                    {SessionInfo.Meeting.Circuit.ShortName},{" "}
-                    {SessionInfo.Meeting.Country.Name}
-                  </p>
-                  <p style={{ marginRight: "var(--space-4)" }}>
-                    Session: {SessionInfo.Name}
-                  </p>
-                </>
-              )} */}
               {!!TrackStatus && (
                 <p style={{ marginRight: "var(--space-4)" }}>
                   Status: {TrackStatus.Message}
@@ -345,7 +308,6 @@ export default function Home() {
               }}
             >
               <p style={{ marginRight: "var(--space-4)" }}>
-                {/* Data updated: {moment.utc(updated).format("HH:mm:ss.SSS")} */}
                 Updated: {moment.utc(updated).format("HH:mm:ss")}
               </p>
               <p style={{ color: "limegreen", marginRight: "var(--space-4)" }}>
@@ -362,46 +324,17 @@ export default function Home() {
                 }}
                 style={{ display: "flex", alignItems: "center" }}
               >
-                {/* <p style={{ marginRight: "var(--space-2)" }}>Delay</p> */}
                 <Input
                   type="number"
                   name="delayMs"
                   defaultValue={delayMs}
                   style={{ width: "75px", marginRight: "var(--space-2)" }}
                 />
-                {/* <p style={{ marginRight: "var(--space-4)" }}>ms</p> */}
               </form>
             </div>
           </div>
 
-          {/* {!!WeatherData && (
-            <div
-              style={{
-                fontSize: "55px",
-                display: "flex",
-                padding: "var(--space-3)",
-                borderBottom: "1px solid var(--colour-border)",
-                overflowX: "auto",
-              }}
-            >
-              {Object.entries(WeatherData).map(([k, v]) =>
-                k !== "_kf" ? (
-                  <p
-                    key={`weather-${k}`}
-                    style={{ marginRight: "var(--space-4)" }}
-                  >
-                    {k}: {v}
-                    {getWeatherUnit(k)}
-                  </p>
-                ) : null
-              )}
-            </div>
-          )} */}
-        
-        
-
         <ResponsiveTable
-          // cols="1fr 3fr"
           style={{
             borderBottom: "1px solid var(--colour-border)",
             width: "100vw",
@@ -409,40 +342,6 @@ export default function Home() {
             display: "flex"
           }}
         >
-          {/* <div style={{ borderRight: "1px solid var(--colour-border)" }}>
-            <div
-              style={{
-                padding: "var(--space-2) var(--space-3)",
-                backgroundColor: "var(--colour-offset)",
-              }}
-            >
-              <p>
-                <strong>TRACK</strong>
-              </p>
-            </div>
-            {!!Position ? (
-              <Map
-                circuit={SessionInfo.Meeting.Circuit.Key}
-                Position={Position.Position[Position.Position.length - 1]}
-                DriverList={DriverList}
-                TimingData={TimingData}
-                TrackStatus={TrackStatus}
-                WindDirection={WeatherData.WindDirection}
-              />
-            ) : (
-              <div
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  height: "400px",
-                }}
-              >
-                <p>NO DATA YET</p>
-              </div>
-            )}
-          </div> */}
-
           <div
             style={{
               fontSize: "40px",
@@ -452,21 +351,10 @@ export default function Home() {
               borderRight: "1px solid var(--colour-border)",
             }}
           >
-            {/* <div
-              style={{
-                padding: "var(--space-2) var(--space-3)",
-                backgroundColor: "var(--colour-offset)",
-              }}
-            >
-              <p>
-                <strong>RACE CONTROL MESSAGES</strong>
-              </p>
-            </div> */}
             {!!RaceControlMessages ? (
               <ul
                 style={{
                   listStyle: "none",
-                  // height: "200px",
                   overflow: "auto",
                   flexGrow: 1,
                 }}
@@ -566,7 +454,6 @@ export default function Home() {
                           flexDirection: "column"
                         }}
                       >
-                        {/* <TableHeader /> */}
                         {lines.slice(0, 10).map(([racingNumber, line]) => (
                           <Driver
                             key={`timing-data-${racingNumber}`}
@@ -586,7 +473,6 @@ export default function Home() {
                           flexDirection: "column"
                         }}
                       >
-                        {/* <TableHeader /> */}
                         {lines
                           .slice(10, 20)
                           .map(([racingNumber, line], pos) => (
@@ -617,60 +503,6 @@ export default function Home() {
               </div>
             )}
           </div>
-
-          {/* <div
-            style={{
-              width: "100%",
-              display: "flex",
-              flexDirection: "column",
-            }}
-          >
-            <div
-              style={{
-                padding: "var(--space-2) var(--space-3)",
-                backgroundColor: "var(--colour-offset)",
-              }}
-            >
-              <p>
-                <strong>TEAM RADIO</strong>
-              </p>
-            </div>
-            {!!TeamRadio ? (
-              <ul
-                style={{
-                  listStyle: "none",
-                  height: "200px",
-                  overflow: "auto",
-                  flexGrow: 1,
-                }}
-              >
-                {[...Object.values(TeamRadio.Captures).sort(sortUtc)].map(
-                  (radio, i) => {
-                    const driver = DriverList[radio.RacingNumber];
-                    return (
-                      <Radio
-                        key={`team-radio-${radio.Utc}-${i}`}
-                        radio={radio}
-                        path={`${f1Url}/static/${SessionInfo.Path}${radio.Path}`}
-                        driver={driver}
-                      />
-                    );
-                  }
-                )}
-              </ul>
-            ) : (
-              <div
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  height: "100%",
-                }}
-              >
-                <p>NO DATA YET</p>
-              </div>
-            )}
-          </div> */}
         </ResponsiveTable>
       </main>
     </>

@@ -47,17 +47,9 @@ const DriverItem = styled.div`
 
   > div {
     padding: 0 var(--space-3);
-    // height: 46px;
     display: flex;
-    // grid-template-columns: ${gridColsSmall};
     grid-gap: var(--space-3);
-    // align-items: center;
     justify-content: space-between; width: 100%;
-
-    // @media screen and (min-width: 900px) {
-    //   // grid-template-columns: ${gridCols};
-    //   grid-gap: var(--space-4);
-    // }
   }
 `;
 
@@ -93,14 +85,7 @@ export const TableHeader = () => (
   <StyledTableHeader>
     <p>POS</p>
     <p style={{ textAlign: "right" }}>DRIVER</p>
-    {/* <p>GEAR/RPM</p>
-    <p>SPD/PDL</p> */}
-    {/* <p>DRS</p> */}
-    {/* <p>TIME</p>
-    <p>GAP</p> */}
     <p>TYRE</p>
-    {/* <p>INFO</p>
-    <p>SECTORS</p> */}
   </StyledTableHeader>
 );
 
@@ -165,26 +150,7 @@ const Driver = ({
           alignItems: "center"
         }}
       >
-        {/* <span>
-          <span
-            title="Position"
-            style={{
-              color:
-                TimingStats.Lines[racingNumber]?.PersonalBestLapTime
-                  ?.Position === 1
-                  ? "magenta"
-                  : "var(--colour-fg)",
-            }}
-          >
-            P{line.Position}
-          </span>
-          <br />
-        </span> */}
-        <span
-          // style={{
-          //   textAlign: "right",
-          // }}
-        >
+        <span>
           <span
             title="Driver"
             style={{
@@ -194,24 +160,8 @@ const Driver = ({
               textAlign: "left"
             }}
           >
-            {/* {racingNumber} {driver?.Tla} */}
             {driver?.Tla}
           </span>
-          {/* {!Number.isNaN(Number(appData?.GridPos)) && (
-          {(
-            <span
-              title="Position change"
-              style={{
-                color: getPosChangeColour(
-                  Number(line.Position),
-                  Number(appData.GridPos)
-                ),
-              }}
-            >
-              {Number(appData.GridPos) >= Number(line.Position) && "+"}
-              {Number(appData.GridPos) - Number(line.Position)}
-            </span>
-          )} */}
         </span>
         <span title="Status" style={{float: "left", 
               width: "33%", 
@@ -228,117 +178,7 @@ const Driver = ({
               ? "PTO"
               : null}
         </span>
-        {/* <span>
-          <span title="Gear">{carData["3"].toString()}</span>{" "}
-          <span title="RPM">{carData["0"].toString()}</span>
-          <br />
-          <ProgressBar title="RPM">
-            <span
-              style={{
-                width: `${rpmPercent}%`,
-                backgroundColor: "cyan",
-              }}
-            />
-          </ProgressBar>
-        </span>
-        <span>
-          <span title="Speed">{carData["2"].toString()} km/h</span>
-          <br />
-          <ProgressBar title="Throttle %">
-            <span
-              style={{
-                width: `${throttlePercent}%`,
-                height: "4px",
-                backgroundColor: "limegreen",
-              }}
-            />
-          </ProgressBar>
-          <ProgressBar title="Brake">
-            <span
-              style={{
-                width: brakeApplied ? "100%" : "0%",
-                height: "4px",
-                backgroundColor: "red",
-              }}
-            />
-          </ProgressBar>
-        </span> */}
-        {/* <span
-          title={`DRS ${
-            drsEnabledValues.includes(carData["45"]) ? "active" : "inactive"
-          }`}
-          style={{
-            color: drsEnabledValues.includes(carData["45"])
-              ? "limegreen"
-              : "grey",
-          }}
-        >
-          DRS
-        </span>
-        <span>
-          <span title="Last lap">
-            Lst{" "}
-            <span
-              style={{
-                color:
-                  line.LastLapTime?.Value && line.LastLapTime?.OverallFastest
-                    ? "magenta"
-                    : line.LastLapTime?.Value &&
-                      line.LastLapTime?.PersonalFastest
-                    ? "limegreen"
-                    : "var(--colour-fg)",
-              }}
-            >
-              {line.LastLapTime?.Value || "—"}
-            </span>
-          </span>
-          <br />
-          <span title="Best lap">
-            Bst{" "}
-            <span
-              style={{
-                color:
-                  line.BestLapTime?.Value &&
-                  (line.BestLapTime?.OverallFastest ||
-                    TimingStats.Lines[racingNumber]?.PersonalBestLapTime
-                      ?.Position === 1)
-                    ? "magenta"
-                    : "var(--colour-fg)",
-              }}
-            >
-              {line.BestLapTime?.Value || "—"}
-            </span>
-          </span>
-        </span>
-        <span>
-          <span
-            title={`Gap to car ahead${
-              line.IntervalToPositionAhead?.Catching ? " (catching)" : ""
-            }`}
-          >
-            Int{" "}
-            <span
-              style={{
-                color: line.IntervalToPositionAhead?.Catching
-                  ? "limegreen"
-                  : "var(--colour-fg)",
-              }}
-            >
-              {line.IntervalToPositionAhead?.Value ||
-                lineStats?.[lineStats?.length - 1]?.TimeDifftoPositionAhead ||
-                "—"}
-            </span>
-          </span>
-          <br />
-          <span title="Gap to leader">
-            Ldr{" "}
-            {line.GapToLeader ||
-              lineStats?.[lineStats?.length - 1]?.TimeDiffToFastest ||
-              "—"}
-          </span>
-        </span> */}
-
-
+        
         <span style={{float: "left", 
               width: "33%", 
               textAlign: "right"}}>
@@ -354,69 +194,8 @@ const Driver = ({
             }`}
           >
             {currentStint?.TotalLaps}
-            {/* {currentStint?.New === "false" && "*"} */}
           </span>
         </span>
-
-
-        {/* <span>
-          <span title="Completed laps">Lap {line.NumberOfLaps ?? "—"}</span>
-          <br />
-          <span title="Pit stops">Stp {line.NumberOfPitStops ?? "—"}</span>
-        </span> */}
-        {/* <span style={{ display: "flex" }}>
-          {(Array.isArray(line.Sectors)
-            ? line.Sectors
-            : Object.values(line.Sectors ?? {})
-          ).map((sector, i) => {
-            return (
-              <span
-                key={`timing-data-${racingNumber}-sector-${i}`}
-                title={`Sector ${i + 1}`}
-                style={{
-                  marginRight: "var(--space-4)",
-                }}
-              >
-                <span
-                  style={{
-                    display: "flex",
-                  }}
-                >
-                  {(Array.isArray(sector.Segments)
-                    ? sector.Segments
-                    : Object.values(sector.Segments ?? {})
-                  ).map((segment, j) => (
-                    <span
-                      key={`timing-data-${racingNumber}-sector-${i}-segment-${j}`}
-                      style={{
-                        width: "2px",
-                        height: "12px",
-                        display: "block",
-                        marginRight: "var(--space-2)",
-                        backgroundColor: getSegmentColour(segment.Status),
-                      }}
-                    />
-                  ))}
-                </span>
-                {sector.Value && (
-                  <span
-                    style={{
-                      color: sector.OverallFastest
-                        ? "magenta"
-                        : sector.PersonalFastest
-                        ? "limegreen"
-                        : "yellow",
-                      marginTop: "var(--space-2)",
-                      display: "inline-block",
-                    }}
-                  >
-                    {sector.Value}
-                  </span>
-                )}
-              </span>
-            );
-          })}
-        </span> */}
       </div>
     </DriverItem>
   );
