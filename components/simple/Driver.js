@@ -128,7 +128,7 @@ const Driver = ({
       setPosChanged(getPosChangeColour(pos, prevPos));
       setTimeout(() => {
         setPosChanged(undefined);
-      }, 2000);
+      }, 5000);
     }
 
     setPrevPos(pos);
