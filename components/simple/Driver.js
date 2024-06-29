@@ -145,6 +145,7 @@ const Driver = ({
       <div
         style={{
           opacity: line.KnockedOut || line.Retired || line.Stopped ? 0.5 : 1,
+          border: line.IntervalToPositionAhead?.Catching ? "2px dashed green" : "none",
           display: "flex",
           height: "100%",
           alignItems: "center"
