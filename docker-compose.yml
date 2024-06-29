@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  monaco-app:
+    image: monaco-img
+    build:
+      context: .
+    container_name: monaco
+    volumes:
+      - .:/app
+      - node_modules:/opt/node_modules
+    working_dir: /app
+    ports:
+      - 3000:3000
+    environment:
+      - NODE_PATH=/opt/node_modules
+
+volumes:
+  node_modules:
