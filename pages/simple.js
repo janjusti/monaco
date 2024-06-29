@@ -274,14 +274,14 @@ export default function Home() {
         
           <div
             style={{
-              fontSize: "45px",
+              fontSize: "2.7vw",
               display: "flex",
               alignItems: "flex-start",
               justifyContent: "space-between",
               padding: "var(--space-3)",
               borderBottom: "1px solid var(--colour-border)",
               overflow: "auto",
-              height: "15vh",
+              maxHeight: "15vh",
             }}
           >
             <div
@@ -349,7 +349,7 @@ export default function Home() {
         >
           <div
             style={{
-              fontSize: "40px",
+              fontSize: "3vw",
               width: "57%",
               display: "flex",
               flexDirection: "column",
@@ -380,7 +380,7 @@ export default function Home() {
                           color: "grey",
                           whiteSpace: "nowrap",
                           marginRight: "var(--space-4)",
-                          fontSize: "35px"
+                          // fontSize: "35px"
                         }}
                       >
                         {getElapsedTime(event.Utc)}
@@ -435,7 +435,7 @@ export default function Home() {
 
           <div
             style={{
-              fontSize: "50px",
+              fontSize: "3vw",
               display: "flex",
               width: "43%",
               flexDirection: "row",
