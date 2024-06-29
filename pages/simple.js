@@ -35,6 +35,11 @@ const getFlagColour = (flag) => {
   }
 };
 
+const getElapsedTime = (eventTime) => {
+  const diff = moment.utc().diff(moment.utc(eventTime), 'seconds');
+  return diff > 3600 ? "--:--" : moment.utc(diff * 1000).format('mm:ss');
+};
+
 export default function Home() {
   const [connected, setConnected] = useState(false);
   const [liveState, setLiveState] = useState({});
@@ -378,8 +383,7 @@ export default function Home() {
                           fontSize: "35px"
                         }}
                       >
-                        {moment.utc(event.Utc).format("HH:mm:ss")}
-                        {event.Lap && `|L${event.Lap}`}
+                        {getElapsedTime(event.Utc)}
                       </span>
                       {event.Category === "Flag" && (
                         <span
