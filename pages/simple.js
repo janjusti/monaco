@@ -350,7 +350,7 @@ export default function Home() {
           <div
             style={{
               fontSize: "3vw",
-              width: "57%",
+              width: "55%",
               display: "flex",
               flexDirection: "column",
               borderRight: "1px solid var(--colour-border)",
@@ -437,7 +437,7 @@ export default function Home() {
             style={{
               fontSize: "3vw",
               display: "flex",
-              width: "43%",
+              width: "45%",
               flexDirection: "row",
               borderRight: "1px solid var(--colour-border)"
             }}
