@@ -452,7 +452,7 @@ export default function Home() {
                     <>
                       <div
                         style={{
-                          borderRight: "1px solid var(--colour-border)",
+                          borderRight: "0.5vh solid var(--colour-border)",
                           width: "50%",
                           display: "flex", 
                           flexDirection: "column"
