@@ -42,7 +42,7 @@ const gridColsSmall = "18px 42px 60px 60px 18px 74px 74px 44px 38px auto";
 const DriverItem = styled.div`
   border-bottom: 1px solid var(--colour-border);
   background-color: ${({ posChanged }) =>
-    posChanged ? transparentize(0.8, posChanged) : "transparent"};
+    posChanged ? transparentize(0.6, posChanged) : "transparent"};
   transition: background-color 300ms;
 
   > div {
