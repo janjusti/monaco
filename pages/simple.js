@@ -380,7 +380,7 @@ export default function Home() {
                           color: "grey",
                           whiteSpace: "nowrap",
                           marginRight: "var(--space-4)",
-                          fontSize: "2vw"
+                          // fontSize: "35px"
                         }}
                       >
                         {getElapsedTime(event.Utc)}
