@@ -287,55 +287,27 @@ export default function Home() {
             <div
               style={{
                 display: "flex",
-                alignItems: "flex-start",
+                alignItems: "center",
               }}
             >
               {!!TrackStatus && (
                 <p style={{ marginRight: "var(--space-4)" }}>
-                  Status: {TrackStatus.Message}
+                  Status: <p>{TrackStatus.Message}</p>
                 </p>
               )}
               {!!LapCount && (
                 <p style={{ marginRight: "var(--space-4)" }}>
-                  Lap: {LapCount.CurrentLap}/{LapCount.TotalLaps}
+                  Lap: <p>{LapCount.CurrentLap}/{LapCount.TotalLaps}</p>
                 </p>
               )}
               {!!extrapolatedTimeRemaining && (
                 <p style={{ marginRight: "var(--space-4)" }}>
-                  Remaining: {extrapolatedTimeRemaining}
+                  Remaining: <p>{extrapolatedTimeRemaining}</p>
                 </p>
               )}
-            </div>
-            <div
-              style={{
-                display: "flex",
-                alignItems: "center",
-              }}
-            >
               <p style={{ marginRight: "var(--space-4)" }}>
-                Updated: {moment.utc(updated).format("HH:mm:ss")}
+                Updated: <p>{moment.utc(updated).format("HH:mm:ss")}</p>
               </p>
-              <p style={{ color: "limegreen", marginRight: "var(--space-4)" }}>
-                CONNECTED
-              </p>
-              <form
-                onSubmit={(e) => {
-                  e.preventDefault();
-                  const form = new FormData(e.target);
-                  const delayMsValue = Number(form.get("delayMs"));
-                  setBlocking(true);
-                  setDelayMs(delayMsValue);
-                  setDelayTarget(Date.now() + delayMsValue);
-                }}
-                style={{ display: "flex", alignItems: "center" }}
-              >
-                <Input
-                  type="number"
-                  name="delayMs"
-                  defaultValue={delayMs}
-                  style={{ width: "75px", marginRight: "var(--space-2)" }}
-                />
-              </form>
             </div>
           </div>
 
