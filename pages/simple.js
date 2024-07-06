@@ -341,7 +341,7 @@ export default function Home() {
                 </p>
               )}
               <p style={{ marginRight: "var(--space-4)" }}>
-                Updated: <p>{moment.utc(updated).format("HH:mm:ss")}</p>
+                Updated: <p>{moment(updated).format("HH:mm:ss")}</p>
               </p>
             </div>
           </div>
