@@ -40,6 +40,41 @@ const getElapsedTime = (eventTime) => {
   return diff > 3600 ? "--:--" : moment.utc(diff * 1000).format('mm:ss');
 };
 
+const createExtraMsgSpans = (message, driverList) => {
+  for (var racingNumber in driverList) {
+    var driver = driverList[racingNumber];
+    message = message.replace(new RegExp(`\\(${driver.Tla}\\)`, 'g'), `(<span style="backgroundColor: black; color: #${driver.TeamColour}">${driver.Tla}</span>)`)
+  };
+
+  message = message.replace(new RegExp("penalty|deleted", 'gi'), '<span style="backgroundColor: red">$&</span>')
+
+  const elements = [];
+  const regex = /<span style="([^"]+)">([^<]+)<\/span>|([^<]+)/g;
+  let match;
+
+  while ((match = regex.exec(message)) !== null) {
+    if (match[1] && match[2]) {
+      const styles = match[1].split(';').reduce((acc, style) => {
+        const [key, value] = style.split(':').map(s => s.trim());
+        if (key && value) {
+          acc[key] = value;
+        }
+        return acc;
+      }, {});
+
+      elements.push(
+        <span key={elements.length} style={styles}>
+          {match[2]}
+        </span>
+      );
+    } else if (match[3]) {
+      elements.push(match[3]);
+    }
+  }
+
+  return <>{elements}</>;
+}
+
 export default function Home() {
   const [connected, setConnected] = useState(false);
   const [liveState, setLiveState] = useState({});
@@ -373,7 +408,11 @@ export default function Home() {
                           FLAG
                         </span>
                       )}
-                      {event.Category != "Flag" && event.Message && <span>{event.Message.trim()}</span>}
+                      {event.Category != "Flag" && event.Message && (
+                        <span>
+                        {createExtraMsgSpans(event.Message.trim(), DriverList)}
+                        </span>
+                      )}
                       {event.Category === "Flag" && event.Message && <span
                         style={{
                           backgroundColor: getFlagColour(event.Flag).bg,
@@ -381,7 +420,7 @@ export default function Home() {
                             getFlagColour(event.Flag).fg ??
                             "var(--colour-fg)"
                         }}
-                      >{event.Message.trim()}</span>}
+                      >{createExtraMsgSpans(event.Message.trim(), DriverList)}</span>}
                       {event.TrackStatus && (
                         <span>TrackStatus: {event.TrackStatus}</span>
                       )}
