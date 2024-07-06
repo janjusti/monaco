@@ -183,19 +183,16 @@ const Driver = ({
         <span style={{float: "left", 
               width: "33%", 
               textAlign: "right"}}>
-          <span title="Tyre compound">
-            <span style={{ color: getTyreColour(currentStint?.Compound) }}>
-              {currentStint?.Compound[0] ?? "—"}
+          <span title="Tyre">
+            <span style={{ 
+              color: getTyreColour(currentStint?.Compound), 
+              textDecoration: currentStint?.New === "false" ? 'underline' : ""
+            }}>
+              {currentStint?.Compound[0] ?? "—" ? String(currentStint?.TotalLaps).padStart(2, '0') : ""}
             </span>
           </span>
-          {"/"}
-          <span
-            title={`Tyre age${
-              currentStint?.New === "false" ? " (not fresh)" : ""
-            }`}
-          >
-            {currentStint?.TotalLaps}
-          </span>
+          {"|"}
+          {line.NumberOfPitStops ?? "—"}
         </span>
       </div>
     </DriverItem>
