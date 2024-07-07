@@ -312,7 +312,7 @@ export default function Home() {
               fontSize: "5vh",
               display: "flex",
               alignItems: "center",
-              justifyContent: "center",
+              justifyContent: "space-between",
               padding: "var(--space-3)",
               borderBottom: "1px solid var(--colour-border)",
               overflow: "auto",
@@ -322,7 +322,7 @@ export default function Home() {
             <div
               style={{
                 display: "flex",
-                alignItems: "center",
+                alignItems: "left",
               }}
             >
               {!!TrackStatus && (
@@ -330,16 +330,33 @@ export default function Home() {
                   <p>{TrackStatus.Message}</p>
                 </p>
               )}
+            </div>
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+              }}
+            >
               {!!LapCount && (
-                <p style={{ marginRight: "var(--space-4)" }}>
+                <p>
                   <p>{LapCount.CurrentLap}/{LapCount.TotalLaps}</p>
                 </p>
+              )} 
+              {!!LapCount && (
+                <p style={{ marginLeft: "var(--space-4)", marginRight: "var(--space-4)" }}>|</p>
               )}
               {!!extrapolatedTimeRemaining && (
-                <p style={{ marginRight: "var(--space-4)" }}>
+                <p>
                   <p>{extrapolatedTimeRemaining}</p>
                 </p>
               )}
+            </div>
+            <div
+              style={{
+                display: "flex",
+                alignItems: "right",
+              }}
+            >
               <p>
                 <p>{moment(updated).format("HH:mm:ss")}</p>
               </p>
