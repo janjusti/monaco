@@ -386,7 +386,9 @@ export default function Home() {
                         style={{
                           whiteSpace: "nowrap",
                           marginRight: "var(--space-4)",
-                          fontSize: "2vw"
+                          fontSize: "2vw",
+                          borderRight: "0.3vw solid var(--colour-border)",
+                          paddingRight: "var(--space-3)"
                         }}
                       >
                         {getElapsedTime(event.Utc)}
