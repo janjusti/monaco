@@ -309,14 +309,14 @@ export default function Home() {
         
           <div
             style={{
-              fontSize: "2.7vw",
+              fontSize: "5vh",
               display: "flex",
-              alignItems: "flex-start",
-              justifyContent: "space-between",
+              alignItems: "center",
+              justifyContent: "center",
               padding: "var(--space-3)",
               borderBottom: "1px solid var(--colour-border)",
               overflow: "auto",
-              maxHeight: "15vh",
+              height: "15vh",
             }}
           >
             <div
@@ -326,22 +326,22 @@ export default function Home() {
               }}
             >
               {!!TrackStatus && (
-                <p style={{ marginRight: "var(--space-4)" }}>
-                  Status: <p>{TrackStatus.Message}</p>
+                <p style={{ marginRight: "var(--space-4)"}}>
+                  <p>{TrackStatus.Message}</p>
                 </p>
               )}
               {!!LapCount && (
                 <p style={{ marginRight: "var(--space-4)" }}>
-                  Lap: <p>{LapCount.CurrentLap}/{LapCount.TotalLaps}</p>
+                  <p>{LapCount.CurrentLap}/{LapCount.TotalLaps}</p>
                 </p>
               )}
               {!!extrapolatedTimeRemaining && (
                 <p style={{ marginRight: "var(--space-4)" }}>
-                  Remaining: <p>{extrapolatedTimeRemaining}</p>
+                  <p>{extrapolatedTimeRemaining}</p>
                 </p>
               )}
-              <p style={{ marginRight: "var(--space-4)" }}>
-                Updated: <p>{moment(updated).format("HH:mm:ss")}</p>
+              <p>
+                <p>{moment(updated).format("HH:mm:ss")}</p>
               </p>
             </div>
           </div>
