@@ -376,7 +376,7 @@ export default function Home() {
                   ...Object.values(SessionData.StatusSeries),
                 ]
                   .sort(sortUtc)
-                  // .filter(event => event.Flag?.toLowerCase() !== "blue")
+                  .filter(event => event.Flag?.toLowerCase() !== "blue")
                   .map((event, i) => (
                     <li
                       key={`race-control-${event.Utc}-${i}`}
