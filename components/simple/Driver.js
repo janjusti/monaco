@@ -158,7 +158,8 @@ const Driver = ({
               color: driver?.TeamColour ? `#${driver.TeamColour}` : undefined,
               float: "left", 
               width: "30%", 
-              textAlign: "left"
+              textAlign: "left",
+              textDecoration: line.GapToLeader.includes(" L") ? 'underline' : ''
             }}
           >
             {driver?.Tla}
