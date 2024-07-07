@@ -188,7 +188,7 @@ const Driver = ({
               color: getTyreColour(currentStint?.Compound), 
               textDecoration: currentStint?.New === "false" ? 'underline' : ""
             }}>
-              {currentStint?.Compound[0] ?? "—" ? String(currentStint?.TotalLaps).padStart(2, '0') : ""}
+              {currentStint?.TotalLaps == undefined ? "—" : currentStint?.TotalLaps}
             </span>
           </span>
           {"|"}
