@@ -157,7 +157,7 @@ const Driver = ({
             style={{
               color: driver?.TeamColour ? `#${driver.TeamColour}` : undefined,
               float: "left", 
-              width: "33%", 
+              width: "30%", 
               textAlign: "left"
             }}
           >
@@ -165,7 +165,7 @@ const Driver = ({
           </span>
         </span>
         <span title="Status" style={{float: "left", 
-              width: "33%", 
+              width: "30%", 
               textAlign: "center"}}>
             {line.KnockedOut
               ? "OUT"
@@ -181,7 +181,7 @@ const Driver = ({
         </span>
         
         <span style={{float: "left", 
-              width: "33%", 
+              width: "40%", 
               textAlign: "right"}}>
           <span title="Tyre">
             <span style={{ 
