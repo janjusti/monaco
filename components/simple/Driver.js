@@ -159,7 +159,7 @@ const Driver = ({
               float: "left", 
               width: "30%", 
               textAlign: "left",
-              textDecoration: line.GapToLeader.includes(" L") ? 'underline' : ''
+              textDecoration: /^\d+\s*L$/.test(line.GapToLeader) ? 'underline' : ''
             }}
           >
             {driver?.Tla}
