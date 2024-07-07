@@ -384,7 +384,6 @@ export default function Home() {
                     >
                       <span
                         style={{
-                          color: "grey",
                           whiteSpace: "nowrap",
                           marginRight: "var(--space-4)",
                           fontSize: "2vw"
