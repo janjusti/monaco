@@ -43,7 +43,7 @@ const getElapsedTime = (eventTime) => {
 const createExtraMsgSpans = (message, driverList) => {
   for (var racingNumber in driverList) {
     var driver = driverList[racingNumber];
-    message = message.replace(new RegExp(`\\(${driver.Tla}\\)`, 'g'), `(<span style="backgroundColor: black; color: #${driver.TeamColour}">${driver.Tla}</span>)`)
+    message = message.replace(new RegExp(`\\(${driver.Tla}\\)`, 'g'), `(<span style="color: black; backgroundColor: #${driver.TeamColour}">${driver.Tla}</span>)`)
   };
 
   message = message.replace(new RegExp("penalty|deleted", 'gi'), '<span style="backgroundColor: darkred">$&</span>')
