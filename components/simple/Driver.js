@@ -151,38 +151,20 @@ const Driver = ({
           alignItems: "center"
         }}
       >
-        <span>
-          <span
-            title="Driver"
-            style={{
-              color: driver?.TeamColour ? `#${driver.TeamColour}` : undefined,
-              float: "left", 
-              width: "30%", 
-              textAlign: "left",
-              textDecoration: /^\d+\s*L$/.test(line.GapToLeader) ? 'underline' : ''
-            }}
-          >
-            {driver?.Tla}
-          </span>
-        </span>
-        <span title="Status" style={{float: "left", 
-              width: "30%", 
-              textAlign: "center"}}>
-            {line.KnockedOut
-              ? "OUT"
-              : line.Retired
-              ? "RET"
-              : line.Stopped
-              ? "STP"
-              : line.InPit
-              ? "PTI"
-              : line.PitOut
-              ? "PTO"
-              : null}
-        </span>
-        
+        <span
+          title="Driver"
+          style={{
+            color: driver?.TeamColour ? `#${driver.TeamColour}` : undefined,
+            float: "left", 
+            width: "50%",
+            textAlign: "left",
+            textDecoration: /^\d+\s*L$/.test(line.GapToLeader) ? 'underline' : ''
+          }}
+        >
+          {driver?.Tla}
+        </span>     
         <span style={{float: "left", 
-              width: "40%", 
+              width: "50%",
               textAlign: "right"}}>
           <span title="Tyre">
             <span style={{ 
@@ -193,7 +175,11 @@ const Driver = ({
             </span>
           </span>
           {"|"}
-          {line.NumberOfPitStops ?? "—"}
+          <span title="Pit stops" style={{
+            color: line.InPit ? "red" : line.PitOut ? "green" : "none"
+          }}>
+            {line.NumberOfPitStops ?? "—"}
+          </span>
         </span>
       </div>
     </DriverItem>
