@@ -464,7 +464,7 @@ export default function Home() {
 
           <div
             style={{
-              fontSize: "3vw",
+              fontSize: "3.5vw",
               display: "flex",
               width: "45%",
               flexDirection: "row",
