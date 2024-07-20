@@ -385,7 +385,8 @@ export default function Home() {
               <ul
                 style={{
                   listStyle: "none",
-                  overflow: "auto",
+                  overflowY: "scroll",
+                  scrollbarWidth: "none",
                   flexGrow: 1,
                 }}
               >
