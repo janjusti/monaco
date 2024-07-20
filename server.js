@@ -136,6 +136,7 @@ const setupStream = async (wss) => {
               "RaceControlMessages",
               "SessionInfo",
               "SessionData",
+              "SessionStatus",
               "LapCount",
               "TimingData",
               "TeamRadio",

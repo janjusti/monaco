@@ -240,6 +240,7 @@ export default function Home() {
     WeatherData,
     DriverList,
     SessionData,
+    SessionStatus,
     RaceControlMessages,
     TimingData,
     TimingAppData,
@@ -316,7 +317,7 @@ export default function Home() {
               padding: "var(--space-3)",
               borderBottom: "1px solid var(--colour-border)",
               overflow: "auto",
-              height: "15vh",
+              height: "10vh",
             }}
           >
             <div
@@ -327,7 +328,7 @@ export default function Home() {
             >
               {!!TrackStatus && (
                 <p style={{ marginRight: "var(--space-4)"}}>
-                  <p>{TrackStatus.Message}</p>
+                  <p>{TrackStatus.Message}|{SessionStatus.Status}</p>
                 </p>
               )}
             </div>
@@ -367,7 +368,7 @@ export default function Home() {
           style={{
             borderBottom: "1px solid var(--colour-border)",
             width: "100vw",
-            height: "85vh",
+            height: "90vh",
             display: "flex"
           }}
         >
