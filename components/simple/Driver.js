@@ -162,7 +162,7 @@ const Driver = ({
         style={{
           opacity: line.KnockedOut || line.Retired || line.Stopped ? 0.5 : 1,
           borderTop: line.IntervalToPositionAhead?.Catching ? "0.7vh dashed green" : "none",
-          background: [1104, 208, 80, 1088].includes(line.Status) ? generateChequeredFlag(0.1, 2) : "none",
+          background: [1104, 208, 1088].includes(line.Status) ? generateChequeredFlag(0.1, 2) : "none",
           display: "flex",
           height: "100%",
           alignItems: "center"
