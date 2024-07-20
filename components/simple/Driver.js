@@ -36,6 +36,22 @@ const getTyreColour = (compound) => {
   }
 };
 
+const generateChequeredFlag = (opacity, size) => {
+  return `repeating-linear-gradient(
+    90deg,
+    rgba(0, 0, 0, ${opacity}) 0,
+    rgba(0, 0, 0, ${opacity}) ${size}vh,
+    rgba(255, 255, 255, ${opacity}) ${size}vh,
+    rgba(255, 255, 255, ${opacity}) ${size*2}vh
+  ), repeating-linear-gradient(
+    0deg,
+    rgba(0, 0, 0, ${opacity}) 0,
+    rgba(0, 0, 0, ${opacity}) ${size}vh,
+    rgba(255, 255, 255, ${opacity}) ${size}vh,
+    rgba(255, 255, 255, ${opacity}) ${size*2}vh
+  )`
+}
+
 const gridCols = "21px 52px 64px 64px 21px 90px 90px 52px 45px auto";
 const gridColsSmall = "18px 42px 60px 60px 18px 74px 74px 44px 38px auto";
 
@@ -146,6 +162,7 @@ const Driver = ({
         style={{
           opacity: line.KnockedOut || line.Retired || line.Stopped ? 0.5 : 1,
           borderTop: line.IntervalToPositionAhead?.Catching ? "0.7vh dashed green" : "none",
+          background: [1104, 208, 80, 1088].includes(line.Status) ? generateChequeredFlag(0.1, 2) : "none",
           display: "flex",
           height: "100%",
           alignItems: "center"
