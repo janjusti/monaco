@@ -187,7 +187,7 @@ const Driver = ({
           title="Driver"
           style={{
             color: driver?.TeamColour ? `#${driver.TeamColour}` : undefined,
-            border: carData["2"] < 40 && !line.InPit && !line.PitOut ? "0.5vh dashed rgba(255, 0, 0, 0.8)" : "none",
+            background: carData["2"] < 40 && !line.InPit && !line.PitOut ? "rgba(255, 0, 0, 0.3)" : "none",
             float: "left", 
             width: "50%",
             textAlign: "left",
