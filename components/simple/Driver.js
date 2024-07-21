@@ -54,6 +54,19 @@ const generateChequeredFlag = (opacity, size) => {
   )`
 }
 
+const generateCatchingLine = (line) => {
+  if (line.IntervalToPositionAhead && typeof line.IntervalToPositionAhead.Value === 'string') {
+    let match = line.IntervalToPositionAhead.Value.match(/^\+(\d+\.\d+)$/);
+    if (match) {
+      let number = parseFloat(match[1]);
+      if (number < 1) {
+        return "0.7vh dashed limegreen";
+      }
+    }
+  }
+  return line.IntervalToPositionAhead?.Catching ? "0.3vh dashed green" : "none";
+}
+
 const gridCols = "21px 52px 64px 64px 21px 90px 90px 52px 45px auto";
 const gridColsSmall = "18px 42px 60px 60px 18px 74px 74px 44px 38px auto";
 
@@ -163,7 +176,7 @@ const Driver = ({
       <div
         style={{
           opacity: line.KnockedOut || line.Retired || line.Stopped ? 0.5 : 1,
-          borderTop: line.IntervalToPositionAhead?.Catching ? "0.7vh dashed green" : "none",
+          borderTop: generateCatchingLine(line),
           background: [1104, 1088].includes(line.Status) ? generateChequeredFlag(0.1, 2) : "none",
           display: "flex",
           height: "100%",
