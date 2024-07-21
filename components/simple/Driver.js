@@ -31,6 +31,8 @@ const getTyreColour = (compound) => {
       return "green";
     case "wet":
       return "blue";
+    case "unknown":
+      return "grey";
     default:
       return "var(--colour-fg)";
   }
