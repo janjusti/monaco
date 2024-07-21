@@ -213,7 +213,7 @@ const Driver = ({
           </span>
           {"|"}
           <span title="Pit stops" style={{
-            background: line.InPit ? "red" : line.PitOut ? "green" : "transparent"
+            background: isDriverOut(line) ? "transparent" : line.InPit ? "red" : line.PitOut ? "green" : "transparent"
           }}>
             {line.NumberOfPitStops ?? "—"}
           </span>
