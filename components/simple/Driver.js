@@ -67,6 +67,10 @@ const generateCatchingLine = (line) => {
   return line.IntervalToPositionAhead?.Catching ? "0.7vh dashed green" : "none";
 }
 
+const isDriverOut = (line) => {
+  return line.KnockedOut || line.Retired || line.Stopped
+}
+
 const gridCols = "21px 52px 64px 64px 21px 90px 90px 52px 45px auto";
 const gridColsSmall = "18px 42px 60px 60px 18px 74px 74px 44px 38px auto";
 
@@ -175,7 +179,7 @@ const Driver = ({
     >
       <div
         style={{
-          opacity: line.KnockedOut || line.Retired || line.Stopped ? 0.5 : 1,
+          opacity: isDriverOut(line) ? 0.5 : 1,
           borderTop: generateCatchingLine(line),
           background: [1104, 1088].includes(line.Status) ? generateChequeredFlag(0.1, 2) : "transparent",
           display: "flex",
