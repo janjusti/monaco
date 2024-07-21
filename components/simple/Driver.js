@@ -55,16 +55,18 @@ const generateChequeredFlag = (opacity, size) => {
 }
 
 const generateCatchingLine = (line) => {
+  const fontSize = "0.35vh";
+  const colour = "limegreen";
   if (line.IntervalToPositionAhead && typeof line.IntervalToPositionAhead.Value === 'string') {
     let match = line.IntervalToPositionAhead.Value.match(/^\+(\d+\.\d+)$/);
     if (match) {
       let number = parseFloat(match[1]);
       if (number < 1 && !line.InPit && !line.PitOut) {
-        return "0.7vh dashed limegreen";
+        return `${fontSize} solid ${colour}`;
       }
     }
   }
-  return line.IntervalToPositionAhead?.Catching ? "0.7vh dashed green" : "none";
+  return line.IntervalToPositionAhead?.Catching ? `${fontSize} dashed ${colour}` : "none";
 }
 
 const isDriverOut = (line) => {
