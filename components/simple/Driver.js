@@ -177,7 +177,7 @@ const Driver = ({
         style={{
           opacity: line.KnockedOut || line.Retired || line.Stopped ? 0.5 : 1,
           borderTop: generateCatchingLine(line),
-          background: [1104, 1088].includes(line.Status) ? generateChequeredFlag(0.1, 2) : "none",
+          background: [1104, 1088].includes(line.Status) ? generateChequeredFlag(0.1, 2) : "transparent",
           display: "flex",
           height: "100%",
           alignItems: "center"
@@ -187,7 +187,7 @@ const Driver = ({
           title="Driver"
           style={{
             color: driver?.TeamColour ? `#${driver.TeamColour}` : undefined,
-            background: carData["2"] < 40 && !line.InPit && !line.PitOut ? "rgba(255, 0, 0, 0.3)" : "none",
+            background: carData["2"] < 40 && !line.InPit && !line.PitOut ? "rgba(255, 0, 0, 0.3)" : "transparent",
             float: "left", 
             width: "50%",
             textAlign: "left",
@@ -209,7 +209,7 @@ const Driver = ({
           </span>
           {"|"}
           <span title="Pit stops" style={{
-            color: line.InPit ? "red" : line.PitOut ? "green" : "none"
+            color: line.InPit ? "red" : line.PitOut ? "green" : "inherit"
           }}>
             {line.NumberOfPitStops ?? "—"}
           </span>
