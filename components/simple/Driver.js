@@ -59,12 +59,12 @@ const generateCatchingLine = (line) => {
     let match = line.IntervalToPositionAhead.Value.match(/^\+(\d+\.\d+)$/);
     if (match) {
       let number = parseFloat(match[1]);
-      if (number < 1) {
+      if (number < 1 && !line.InPit && !line.PitOut) {
         return "0.7vh dashed limegreen";
       }
     }
   }
-  return line.IntervalToPositionAhead?.Catching ? "0.3vh dashed green" : "none";
+  return line.IntervalToPositionAhead?.Catching ? "0.7vh dashed green" : "none";
 }
 
 const gridCols = "21px 52px 64px 64px 21px 90px 90px 52px 45px auto";
