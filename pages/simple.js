@@ -318,6 +318,8 @@ export default function Home() {
               borderBottom: "1px solid var(--colour-border)",
               overflow: "auto",
               height: "10vh",
+              backgroundColor: getFlagColour(TrackStatus.Message).bg,
+              color: getFlagColour(TrackStatus.Message).fg ?? "var(--colour-fg)"
             }}
           >
             <div
