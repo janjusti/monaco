@@ -481,48 +481,40 @@ export default function Home() {
                   const lines = Object.entries(TimingData.Lines).sort(
                     sortPosition
                   );
+                  const renderDriverList = (linesSlice) => (
+                    linesSlice.map(([racingNumber, line], pos) => (
+                      <Driver
+                        key={`timing-data-${racingNumber}`}
+                        racingNumber={racingNumber}
+                        line={line}
+                        DriverList={DriverList}
+                        CarData={CarData}
+                        TimingAppData={TimingAppData}
+                        TimingStats={TimingStats}
+                        position={pos}
+                      />
+                    ))
+                  );
                   return (
                     <>
                       <div
                         style={{
                           borderRight: "0.5vh solid var(--colour-border)",
                           width: "50%",
-                          display: "flex", 
+                          display: "flex",
                           flexDirection: "column"
                         }}
                       >
-                        {lines.slice(0, 10).map(([racingNumber, line]) => (
-                          <Driver
-                            key={`timing-data-${racingNumber}`}
-                            racingNumber={racingNumber}
-                            line={line}
-                            DriverList={DriverList}
-                            CarData={CarData}
-                            TimingAppData={TimingAppData}
-                            TimingStats={TimingStats}
-                          />
-                        ))}
+                        {renderDriverList(lines.slice(0, 10))}
                       </div>
                       <div
                         style={{
                           width: "50%",
-                          display: "flex", 
+                          display: "flex",
                           flexDirection: "column"
                         }}
                       >
-                        {lines
-                          .slice(10, 20)
-                          .map(([racingNumber, line], pos) => (
-                            <Driver
-                              key={`timing-data-${racingNumber}`}
-                              racingNumber={racingNumber}
-                              line={line}
-                              DriverList={DriverList}
-                              CarData={CarData}
-                              TimingAppData={TimingAppData}
-                              TimingStats={TimingStats}
-                            />
-                          ))}
+                        {renderDriverList(lines.slice(10, 20))}
                       </div>
                     </>
                   );

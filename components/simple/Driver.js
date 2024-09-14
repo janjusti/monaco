@@ -139,6 +139,7 @@ const Driver = ({
   CarData,
   TimingAppData,
   TimingStats,
+  position
 }) => {
   const driver = DriverList[racingNumber];
   const carData =
@@ -176,7 +177,8 @@ const Driver = ({
       teamColour={driver?.TeamColour ? `#${driver.TeamColour}` : undefined}
       posChanged={posChanged}
       style={{
-        flex: "1 1 0%"
+        flex: "1 1 0%",
+        borderTop: position === 5 ? "0.5vh solid var(--colour-border)" : undefined
       }}
     >
       <div
