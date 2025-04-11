@@ -1,5 +1,3 @@
-version: '3.8'
-
 services:
   monaco-app:
     image: monaco-img
@@ -8,12 +6,24 @@ services:
     container_name: monaco
     volumes:
       - .:/app
+      - dot_next:/app/.next
       - node_modules:/opt/node_modules
     working_dir: /app
-    ports:
-      - 3000:3000
+    networks:
+      nginx-pm-net:
+      cf-tunnel-net:
+    restart: unless-stopped
     environment:
       - NODE_PATH=/opt/node_modules
 
+networks:
+  nginx-pm-net:
+    name: nginx-pm-net
+    external: true
+  cf-tunnel-net:
+    name: cf-tunnel-net
+    external: true
+
 volumes:
   node_modules:
+  dot_next:
