@@ -139,7 +139,8 @@ const Driver = ({
   CarData,
   TimingAppData,
   TimingStats,
-  position
+  position,
+  sessionInfo
 }) => {
   const driver = DriverList[racingNumber];
   const carData =
@@ -185,7 +186,11 @@ const Driver = ({
         style={{
           opacity: isDriverOut(line) ? 0.5 : 1,
           borderTop: generateCatchingLine(line),
-          background: [1104, 1088].includes(line.Status) ? generateChequeredFlag(0.1, 2) : "transparent",
+          background: [1104, 1088].includes(line.Status)
+          ? generateChequeredFlag(0.1, 2)
+          : (!line.BestLapTime?.Value && sessionInfo.Type?.toLowerCase().includes("qualify"))
+            ? "rgba(128, 128, 128, 0.3)"
+            : "transparent",
           display: "flex",
           height: "100%",
           alignItems: "center"

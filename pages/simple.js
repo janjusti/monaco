@@ -495,6 +495,7 @@ export default function Home() {
                         TimingAppData={TimingAppData}
                         TimingStats={TimingStats}
                         position={pos}
+                        sessionInfo={SessionInfo}
                       />
                     ))
                   );
