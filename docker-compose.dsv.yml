@@ -6,3 +6,7 @@ services:
     container_name: monaco-app-dsv
     ports:
       - "3000:3000"
+
+volumes:
+  node_modules:
+  dot_next:

@@ -3,10 +3,6 @@ services:
     extends:
       file: docker-compose.base.yml
       service: monaco-app-base
-    volumes:
-      - .:/app
-      - dot_next:/app/.next
-      - node_modules:/opt/node_modules
     networks:
       nginx-pm-net:
       cf-tunnel-net:

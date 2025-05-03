@@ -6,7 +6,13 @@ services:
     container_name: monaco
     volumes:
       - .:/app
+      - dot_next:/app/.next
+      - node_modules:/opt/node_modules
     working_dir: /app
     restart: unless-stopped
     environment:
       - NODE_PATH=/opt/node_modules
+
+volumes:
+  node_modules:
+  dot_next:
