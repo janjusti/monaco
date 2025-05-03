@@ -1,0 +1,8 @@
+services:
+  monaco-app-dsv:
+    extends:
+      file: docker-compose.base.yml
+      service: monaco-app-base
+    container_name: monaco-app-dsv
+    ports:
+      - "3000:3000"

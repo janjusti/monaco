@@ -1,0 +1,12 @@
+services:
+  monaco-app-base:
+    image: monaco-img
+    build:
+      context: .
+    container_name: monaco
+    volumes:
+      - .:/app
+    working_dir: /app
+    restart: unless-stopped
+    environment:
+      - NODE_PATH=/opt/node_modules

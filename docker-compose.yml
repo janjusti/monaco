@@ -1,20 +1,15 @@
 services:
   monaco-app:
-    image: monaco-img
-    build:
-      context: .
-    container_name: monaco
+    extends:
+      file: docker-compose.base.yml
+      service: monaco-app-base
     volumes:
       - .:/app
       - dot_next:/app/.next
       - node_modules:/opt/node_modules
-    working_dir: /app
     networks:
       nginx-pm-net:
       cf-tunnel-net:
-    restart: unless-stopped
-    environment:
-      - NODE_PATH=/opt/node_modules
 
 networks:
   nginx-pm-net:
