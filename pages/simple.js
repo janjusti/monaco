@@ -26,6 +26,9 @@ const getFlagColour = (flag) => {
     case "yellow":
     case "double yellow":
       return { bg: "yellow", fg: "var(--colour-bg)" };
+    case "vscdeployed":
+    case "scdeployed":
+      return { bg: "olive" };
     case "red":
       return { bg: "red" };
     case "blue":
