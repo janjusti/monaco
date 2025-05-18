@@ -36,8 +36,8 @@ const getTyreColour = (compound) => {
   }
 };
 
-const gridCols = "21px 52px 64px 64px 21px 90px 90px 52px 45px auto";
-const gridColsSmall = "18px 42px 60px 60px 18px 74px 74px 44px 38px auto";
+const gridCols = "21px 27px 52px 64px 64px 21px 90px 90px 52px 45px auto";
+const gridColsSmall = "18px 24px 42px 60px 60px 18px 74px 74px 44px 38px auto";
 
 const DriverItem = styled.div`
   border-bottom: 1px solid var(--colour-border);
@@ -91,6 +91,7 @@ const StyledTableHeader = styled.div`
 export const TableHeader = () => (
   <StyledTableHeader>
     <p>POS</p>
+    <p>CHPOS</p>
     <p style={{ textAlign: "right" }}>DRIVER</p>
     <p>GEAR/RPM</p>
     <p>SPD/PDL</p>
@@ -116,8 +117,10 @@ const Driver = ({
   CarData,
   TimingAppData,
   TimingStats,
+  ChampionshipPrediction,
 }) => {
   const driver = DriverList[racingNumber];
+  const driverChPredict = ChampionshipPrediction.Drivers[racingNumber];
   const carData =
     CarData.Entries[CarData.Entries.length - 1].Cars[racingNumber].Channels;
 
@@ -186,6 +189,25 @@ const Driver = ({
               {Number(appData.GridPos) - Number(line.Position)}
             </span>
           )}
+        </span>
+        <span>
+          <span
+            title="Championship position"
+            style={{
+              color: getPosChangeColour(
+                  Number(driverChPredict.PredictedPosition),
+                  Number(driverChPredict.CurrentPosition)
+                ),
+            }}
+          >
+            #{driverChPredict.PredictedPosition}
+          </span>
+          <br />
+          <span
+            title="Championship points"
+          >
+            {driverChPredict.PredictedPoints}pts
+          </span>
         </span>
         <span
           style={{

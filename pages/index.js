@@ -230,6 +230,7 @@ export default function Home() {
     CarData,
     Position,
     TeamRadio,
+    ChampionshipPrediction,
   } = liveState;
 
   if (!Heartbeat)
@@ -439,6 +440,7 @@ export default function Home() {
                             CarData={CarData}
                             TimingAppData={TimingAppData}
                             TimingStats={TimingStats}
+                            ChampionshipPrediction={ChampionshipPrediction}
                           />
                         ))}
                       </div>
@@ -455,6 +457,7 @@ export default function Home() {
                               CarData={CarData}
                               TimingAppData={TimingAppData}
                               TimingStats={TimingStats}
+                              ChampionshipPrediction={ChampionshipPrediction}
                             />
                           ))}
                       </div>
