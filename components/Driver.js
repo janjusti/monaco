@@ -120,7 +120,7 @@ const Driver = ({
   ChampionshipPrediction,
 }) => {
   const driver = DriverList[racingNumber];
-  const driverChPredict = ChampionshipPrediction.Drivers[racingNumber];
+  const driverChPredict = ChampionshipPrediction?.Drivers[racingNumber];
   const carData =
     CarData.Entries[CarData.Entries.length - 1].Cars[racingNumber].Channels;
 
@@ -195,18 +195,16 @@ const Driver = ({
             title="Championship position"
             style={{
               color: getPosChangeColour(
-                  Number(driverChPredict.PredictedPosition),
-                  Number(driverChPredict.CurrentPosition)
-                ),
+                Number(driverChPredict?.PredictedPosition ?? 0),
+                Number(driverChPredict?.CurrentPosition ?? 0)
+              ),
             }}
           >
-            #{driverChPredict.PredictedPosition}
+            {driverChPredict?.PredictedPosition != null ? `#${driverChPredict.PredictedPosition}` : "-"}
           </span>
           <br />
-          <span
-            title="Championship points"
-          >
-            {driverChPredict.PredictedPoints}pts
+          <span title="Championship points">
+            {driverChPredict?.PredictedPoints != null ? `${driverChPredict.PredictedPoints}pts` : "-"}
           </span>
         </span>
         <span
