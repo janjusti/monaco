@@ -204,7 +204,7 @@ const Driver = ({
           </span>
           <br />
           <span title="Championship points">
-            {driverChPredict?.PredictedPoints != null ? `${driverChPredict.PredictedPoints}pts` : "-"}
+            {driverChPredict?.PredictedPoints != null ? `(${driverChPredict.PredictedPoints})` : "-"}
           </span>
         </span>
         <span
