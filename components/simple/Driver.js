@@ -214,17 +214,17 @@ const Driver = ({
               textAlign: "right"}}>
           <span title="Tyre">
             <span style={{ 
-              color: getTyreColour(currentStint?.Compound), 
-              textDecoration: currentStint?.New === "false" ? 'underline' : ""
+              color: isDriverOut(line) ? "gray" : getTyreColour(currentStint?.Compound), 
+              textDecoration: isDriverOut(line) ? "": currentStint?.New === "false" ? 'underline' : ""
             }}>
-              {currentStint?.TotalLaps == undefined ? "—" : currentStint?.TotalLaps}
+              {currentStint?.TotalLaps == undefined ? "—" : isDriverOut(line) ? line.NumberOfLaps ?? "—" : currentStint?.TotalLaps}
             </span>
           </span>
           {"|"}
           <span title="Pit stops" style={{
             background: isDriverOut(line) ? "transparent" : line.InPit ? "red" : line.PitOut ? "green" : "transparent"
           }}>
-            {line.NumberOfPitStops ?? "—"}
+            {isDriverOut(line) ? "X" : line.NumberOfPitStops ?? "—"}
           </span>
         </span>
       </div>
